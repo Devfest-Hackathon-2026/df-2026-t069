@@ -1,0 +1,20 @@
+# 各ディレクトリの担当者を自動でレビュアーに割り当てる。
+# TODO: @role1-user 等を各メンバーの GitHub ID に置き換える
+
+/frontend/src/app/            @role1-user
+/frontend/src/components/     @role1-user
+/frontend/src/features/       @role2-user
+/frontend/src/stores/         @role2-user
+/frontend/src/lib/            @role2-user
+/samples/                     @role2-user
+/backend/                     @role3-user
+/backend/app/core/            @role4-user @role3-user
+/infra/                       @role4-user
+/docs/                        @role4-user
+/.github/                     @role4-user
+
+# API契約は双方のレビュー必須
+/frontend/src/types/          @role2-user @role3-user
+/backend/app/schemas/         @role2-user @role3-user
+/docs/api-contract.md         @role2-user @role3-user
+

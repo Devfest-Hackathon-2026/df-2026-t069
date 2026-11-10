@@ -1,0 +1,29 @@
+/* [Role1] デザインシステムはここから育てる */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Hiragino Sans", sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px;
+}
+button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #1d4ed8;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+

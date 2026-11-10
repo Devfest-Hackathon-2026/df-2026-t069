@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <!-- 鮮やかなブルーシールドグラデーション -->
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="40%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+
+    <!-- ハイライト光沢 -->
+    <linearGradient id="shineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- ドロップシャドウ -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#1e3a8a" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- 盾の外観（鮮やかなブルー） -->
+  <path d="M 64 6 
+           C 96 6, 118 16, 120 34 
+           C 120 74, 96 108, 64 124 
+           C 32 108, 8 74, 8 34 
+           C 10 16, 32 6, 64 6 Z" 
+        fill="url(#shieldGrad)" 
+        filter="url(#shadow)" />
+
+  <!-- 盾の上部光沢ハイライト -->
+  <path d="M 64 10 
+           C 92 10, 112 19, 114 34 
+           C 90 44, 38 44, 14 34 
+           C 16 19, 36 10, 64 10 Z" 
+        fill="url(#shineGrad)" />
+
+  <!-- 音声波形（Voice Wave - 5本の純白バー、くっきり認識可能） -->
+  <!-- バー1（左端） -->
+  <rect x="34" y="52" width="8" height="24" rx="4" fill="#ffffff" />
+  <!-- バー2（中左） -->
+  <rect x="47" y="38" width="8" height="52" rx="4" fill="#ffffff" />
+  <!-- バー3（中央・最大） -->
+  <rect x="60" y="28" width="8" height="72" rx="4" fill="#ffffff" />
+  <!-- バー4（中右） -->
+  <rect x="73" y="38" width="8" height="52" rx="4" fill="#ffffff" />
+  <!-- バー5（右端） -->
+  <rect x="86" y="52" width="8" height="24" rx="4" fill="#ffffff" />
+
+  <!-- AIの守護星（スパークル） -->
+  <path d="M 98 22 Q 98 28 104 28 Q 98 28 98 34 Q 98 28 92 28 Q 98 28 98 22 Z" 
+        fill="#fef08a" />
+</svg>

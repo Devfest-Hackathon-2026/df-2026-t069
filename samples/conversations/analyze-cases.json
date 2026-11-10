@@ -1,0 +1,1208 @@
+{
+  "version": "1",
+  "label_status": "draft_requires_team_review",
+  "synthetic_only": true,
+  "description": "架空会話25件。正解ラベルはチームレビュー前の仮説。台本はutterances.textを順に読む。",
+  "cases": [
+    {
+      "case_id": "high_refund_atm",
+      "kind": "suspicious",
+      "split": "tuning",
+      "title": "返金を理由にATMへ誘導",
+      "expected": {
+        "risk_level": "high",
+        "is_suspicious": true,
+        "category": "C1",
+        "immediate_alert": true
+      },
+      "evidence_hint": "ATMで還付",
+      "request": {
+        "sessionId": "synthetic-high_refund_atm",
+        "utterances": [
+          {
+            "id": "high_refund_atm-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "high_refund_atm-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "high_refund_atm-u3",
+            "text": "担当者：医療費の返金手続きを説明します。",
+            "startSec": 6
+          },
+          {
+            "id": "high_refund_atm-u4",
+            "text": "患者：内容を説明してください。",
+            "startSec": 9
+          },
+          {
+            "id": "high_refund_atm-u5",
+            "text": "担当者：ATMで還付手続きをしてください。",
+            "startSec": 12
+          },
+          {
+            "id": "high_refund_atm-u6",
+            "text": "患者：いったん内容を確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "high_urgent_transfer",
+      "kind": "suspicious",
+      "split": "tuning",
+      "title": "確認を許さない即時振込",
+      "expected": {
+        "risk_level": "high",
+        "is_suspicious": true,
+        "category": "C1",
+        "immediate_alert": true
+      },
+      "evidence_hint": "今すぐ指定口座",
+      "request": {
+        "sessionId": "synthetic-high_urgent_transfer",
+        "utterances": [
+          {
+            "id": "high_urgent_transfer-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "high_urgent_transfer-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "high_urgent_transfer-u3",
+            "text": "担当者：配送手数料の支払いが必要です。",
+            "startSec": 6
+          },
+          {
+            "id": "high_urgent_transfer-u4",
+            "text": "患者：内容を説明してください。",
+            "startSec": 9
+          },
+          {
+            "id": "high_urgent_transfer-u5",
+            "text": "担当者：今すぐ指定口座へ振り込んでください。窓口へ確認する時間はありません。",
+            "startSec": 12
+          },
+          {
+            "id": "high_urgent_transfer-u6",
+            "text": "患者：いったん内容を確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "high_password",
+      "kind": "suspicious",
+      "split": "tuning",
+      "title": "パスワードの開示要求",
+      "expected": {
+        "risk_level": "high",
+        "is_suspicious": true,
+        "category": "C2",
+        "immediate_alert": true
+      },
+      "evidence_hint": "パスワード",
+      "request": {
+        "sessionId": "synthetic-high_password",
+        "utterances": [
+          {
+            "id": "high_password-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "high_password-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "high_password-u3",
+            "text": "担当者：受付の本人確認を行います。",
+            "startSec": 6
+          },
+          {
+            "id": "high_password-u4",
+            "text": "患者：内容を説明してください。",
+            "startSec": 9
+          },
+          {
+            "id": "high_password-u5",
+            "text": "担当者：診療アプリのパスワードを口頭で教えてください。",
+            "startSec": 12
+          },
+          {
+            "id": "high_password-u6",
+            "text": "患者：いったん内容を確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "high_pin",
+      "kind": "suspicious",
+      "split": "tuning",
+      "title": "銀行暗証番号の要求",
+      "expected": {
+        "risk_level": "high",
+        "is_suspicious": true,
+        "category": "C2",
+        "immediate_alert": true
+      },
+      "evidence_hint": "暗証番号",
+      "request": {
+        "sessionId": "synthetic-high_pin",
+        "utterances": [
+          {
+            "id": "high_pin-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "high_pin-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "high_pin-u3",
+            "text": "担当者：支払いの確認が必要です。",
+            "startSec": 6
+          },
+          {
+            "id": "high_pin-u4",
+            "text": "患者：内容を説明してください。",
+            "startSec": 9
+          },
+          {
+            "id": "high_pin-u5",
+            "text": "担当者：銀行の暗証番号を教えてください。",
+            "startSec": 12
+          },
+          {
+            "id": "high_pin-u6",
+            "text": "患者：いったん内容を確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "high_otp",
+      "kind": "suspicious",
+      "split": "tuning",
+      "title": "認証コードの読み上げ",
+      "expected": {
+        "risk_level": "high",
+        "is_suspicious": true,
+        "category": "C2",
+        "immediate_alert": true
+      },
+      "evidence_hint": "認証コード",
+      "request": {
+        "sessionId": "synthetic-high_otp",
+        "utterances": [
+          {
+            "id": "high_otp-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "high_otp-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "high_otp-u3",
+            "text": "担当者：手続きの確認番号が届きます。",
+            "startSec": 6
+          },
+          {
+            "id": "high_otp-u4",
+            "text": "患者：内容を説明してください。",
+            "startSec": 9
+          },
+          {
+            "id": "high_otp-u5",
+            "text": "担当者：届いた認証コードを読み上げてください。",
+            "startSec": 12
+          },
+          {
+            "id": "high_otp-u6",
+            "text": "患者：いったん内容を確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "high_remote_bank",
+      "kind": "suspicious",
+      "split": "tuning",
+      "title": "遠隔操作と金融画面への誘導",
+      "expected": {
+        "risk_level": "high",
+        "is_suspicious": true,
+        "category": "C3",
+        "immediate_alert": true
+      },
+      "evidence_hint": "遠隔操作アプリ",
+      "request": {
+        "sessionId": "synthetic-high_remote_bank",
+        "utterances": [
+          {
+            "id": "high_remote_bank-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "high_remote_bank-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "high_remote_bank-u3",
+            "text": "担当者：振込手続きを代わりに操作します。",
+            "startSec": 6
+          },
+          {
+            "id": "high_remote_bank-u4",
+            "text": "患者：内容を説明してください。",
+            "startSec": 9
+          },
+          {
+            "id": "high_remote_bank-u5",
+            "text": "担当者：遠隔操作アプリを入れて銀行画面を開いてください。確認せず今すぐ進めてください。",
+            "startSec": 12
+          },
+          {
+            "id": "high_remote_bank-u6",
+            "text": "患者：いったん内容を確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "high_link_secret",
+      "kind": "suspicious",
+      "split": "tuning",
+      "title": "脅しを伴う機密情報入力への誘導",
+      "expected": {
+        "risk_level": "high",
+        "is_suspicious": true,
+        "category": "C3",
+        "immediate_alert": true
+      },
+      "evidence_hint": "このリンク",
+      "request": {
+        "sessionId": "synthetic-high_link_secret",
+        "utterances": [
+          {
+            "id": "high_link_secret-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "high_link_secret-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "high_link_secret-u3",
+            "text": "担当者：この通話で送ったリンクから手続きしてください。",
+            "startSec": 6
+          },
+          {
+            "id": "high_link_secret-u4",
+            "text": "患者：内容を説明してください。",
+            "startSec": 9
+          },
+          {
+            "id": "high_link_secret-u5",
+            "text": "担当者：このリンクで銀行のログイン情報を入力してください。今やらないと利用停止になります。",
+            "startSec": 12
+          },
+          {
+            "id": "high_link_secret-u6",
+            "text": "患者：いったん内容を確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "high_authority_threat",
+      "kind": "suspicious",
+      "split": "holdout",
+      "title": "肩書を使った確認妨害",
+      "expected": {
+        "risk_level": "high",
+        "is_suspicious": true,
+        "category": "C4",
+        "immediate_alert": true
+      },
+      "evidence_hint": "公的機関の指示",
+      "request": {
+        "sessionId": "synthetic-high_authority_threat",
+        "utterances": [
+          {
+            "id": "high_authority_threat-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "high_authority_threat-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "high_authority_threat-u3",
+            "text": "担当者：架空のしろいし保険案内室の職員を名乗っています。",
+            "startSec": 6
+          },
+          {
+            "id": "high_authority_threat-u4",
+            "text": "患者：内容を説明してください。",
+            "startSec": 9
+          },
+          {
+            "id": "high_authority_threat-u5",
+            "text": "担当者：公的機関の指示です。代表窓口へ問い合わせることは認めません。こちらの手続きだけ進めてください。",
+            "startSec": 12
+          },
+          {
+            "id": "high_authority_threat-u6",
+            "text": "患者：いったん内容を確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "high_no_consultation",
+      "kind": "suspicious",
+      "split": "holdout",
+      "title": "家族への相談禁止",
+      "expected": {
+        "risk_level": "high",
+        "is_suspicious": true,
+        "category": "C5",
+        "immediate_alert": true
+      },
+      "evidence_hint": "相談しないで",
+      "request": {
+        "sessionId": "synthetic-high_no_consultation",
+        "utterances": [
+          {
+            "id": "high_no_consultation-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "high_no_consultation-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "high_no_consultation-u3",
+            "text": "担当者：特別な支払い手続きを説明します。",
+            "startSec": 6
+          },
+          {
+            "id": "high_no_consultation-u4",
+            "text": "患者：内容を説明してください。",
+            "startSec": 9
+          },
+          {
+            "id": "high_no_consultation-u5",
+            "text": "担当者：家族や医療機関には絶対に相談しないでください。",
+            "startSec": 12
+          },
+          {
+            "id": "high_no_consultation-u6",
+            "text": "患者：いったん内容を確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "high_no_hangup",
+      "kind": "suspicious",
+      "split": "holdout",
+      "title": "送金するまで切電を禁止",
+      "expected": {
+        "risk_level": "high",
+        "is_suspicious": true,
+        "category": "C5",
+        "immediate_alert": true
+      },
+      "evidence_hint": "電話を切らない",
+      "request": {
+        "sessionId": "synthetic-high_no_hangup",
+        "utterances": [
+          {
+            "id": "high_no_hangup-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "high_no_hangup-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "high_no_hangup-u3",
+            "text": "担当者：今から送金操作を案内します。",
+            "startSec": 6
+          },
+          {
+            "id": "high_no_hangup-u4",
+            "text": "患者：内容を説明してください。",
+            "startSec": 9
+          },
+          {
+            "id": "high_no_hangup-u5",
+            "text": "担当者：振込が終わるまで電話を切らないでください。ほかの人への確認も禁止です。",
+            "startSec": 12
+          },
+          {
+            "id": "high_no_hangup-u6",
+            "text": "患者：いったん内容を確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "low_symptoms",
+      "kind": "normal",
+      "split": "tuning",
+      "title": "症状の経過確認",
+      "expected": {
+        "risk_level": "low",
+        "is_suspicious": false,
+        "category": null,
+        "immediate_alert": false
+      },
+      "evidence_hint": null,
+      "request": {
+        "sessionId": "synthetic-low_symptoms",
+        "utterances": [
+          {
+            "id": "low_symptoms-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "low_symptoms-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "low_symptoms-u3",
+            "text": "担当者：今日はどうされましたか。",
+            "startSec": 6
+          },
+          {
+            "id": "low_symptoms-u4",
+            "text": "患者：昨日から熱があります。",
+            "startSec": 9
+          },
+          {
+            "id": "low_symptoms-u5",
+            "text": "担当者：熱はいつから続いていますか。",
+            "startSec": 12
+          },
+          {
+            "id": "low_symptoms-u6",
+            "text": "患者：わかりました。不明点があれば確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "low_medication",
+      "kind": "normal",
+      "split": "tuning",
+      "title": "服薬状況の確認",
+      "expected": {
+        "risk_level": "low",
+        "is_suspicious": false,
+        "category": null,
+        "immediate_alert": false
+      },
+      "evidence_hint": null,
+      "request": {
+        "sessionId": "synthetic-low_medication",
+        "utterances": [
+          {
+            "id": "low_medication-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "low_medication-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "low_medication-u3",
+            "text": "担当者：今飲んでいる薬はありますか。",
+            "startSec": 6
+          },
+          {
+            "id": "low_medication-u4",
+            "text": "患者：薬の名前を手元の一覧で確認します。",
+            "startSec": 9
+          },
+          {
+            "id": "low_medication-u5",
+            "text": "担当者：一覧を見ながら名前を教えていただけますか。",
+            "startSec": 12
+          },
+          {
+            "id": "low_medication-u6",
+            "text": "患者：わかりました。不明点があれば確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "low_medicine_explanation",
+      "kind": "normal",
+      "split": "tuning",
+      "title": "処方内容の確認案内",
+      "expected": {
+        "risk_level": "low",
+        "is_suspicious": false,
+        "category": null,
+        "immediate_alert": false
+      },
+      "evidence_hint": null,
+      "request": {
+        "sessionId": "synthetic-low_medicine_explanation",
+        "utterances": [
+          {
+            "id": "low_medicine_explanation-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "low_medicine_explanation-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "low_medicine_explanation-u3",
+            "text": "担当者：薬の説明書をお渡ししています。",
+            "startSec": 6
+          },
+          {
+            "id": "low_medicine_explanation-u4",
+            "text": "患者：飲み方について質問があります。",
+            "startSec": 9
+          },
+          {
+            "id": "low_medicine_explanation-u5",
+            "text": "担当者：説明書を一緒に確認し、不明な点は担当の医師や薬剤師に確認しましょう。",
+            "startSec": 12
+          },
+          {
+            "id": "low_medicine_explanation-u6",
+            "text": "患者：わかりました。不明点があれば確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "low_booking",
+      "kind": "normal",
+      "split": "tuning",
+      "title": "次回予約",
+      "expected": {
+        "risk_level": "low",
+        "is_suspicious": false,
+        "category": null,
+        "immediate_alert": false
+      },
+      "evidence_hint": null,
+      "request": {
+        "sessionId": "synthetic-low_booking",
+        "utterances": [
+          {
+            "id": "low_booking-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "low_booking-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "low_booking-u3",
+            "text": "担当者：次回の予約についてご案内します。",
+            "startSec": 6
+          },
+          {
+            "id": "low_booking-u4",
+            "text": "患者：来週の午後は空いていますか。",
+            "startSec": 9
+          },
+          {
+            "id": "low_booking-u5",
+            "text": "担当者：来週の午後に空きがあります。希望の日時を選んでください。",
+            "startSec": 12
+          },
+          {
+            "id": "low_booking-u6",
+            "text": "患者：わかりました。不明点があれば確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "low_billing",
+      "kind": "normal",
+      "split": "tuning",
+      "title": "通常の会計説明",
+      "expected": {
+        "risk_level": "low",
+        "is_suspicious": false,
+        "category": null,
+        "immediate_alert": false
+      },
+      "evidence_hint": null,
+      "request": {
+        "sessionId": "synthetic-low_billing",
+        "utterances": [
+          {
+            "id": "low_billing-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "low_billing-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "low_billing-u3",
+            "text": "担当者：本日の診療費は三千円です。",
+            "startSec": 6
+          },
+          {
+            "id": "low_billing-u4",
+            "text": "患者：費用の内訳を確認できますか。",
+            "startSec": 9
+          },
+          {
+            "id": "low_billing-u5",
+            "text": "担当者：明細をご案内します。支払い前に不明点をご確認ください。",
+            "startSec": 12
+          },
+          {
+            "id": "low_billing-u6",
+            "text": "患者：わかりました。不明点があれば確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "low_identity",
+      "kind": "normal",
+      "split": "tuning",
+      "title": "通常の本人確認",
+      "expected": {
+        "risk_level": "low",
+        "is_suspicious": false,
+        "category": null,
+        "immediate_alert": false
+      },
+      "evidence_hint": null,
+      "request": {
+        "sessionId": "synthetic-low_identity",
+        "utterances": [
+          {
+            "id": "low_identity-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "low_identity-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "low_identity-u3",
+            "text": "担当者：受付の確認を行います。",
+            "startSec": 6
+          },
+          {
+            "id": "low_identity-u4",
+            "text": "患者：何を確認しますか。",
+            "startSec": 9
+          },
+          {
+            "id": "low_identity-u5",
+            "text": "担当者：ご予約のお名前と生年月日を確認してもよいですか。",
+            "startSec": 12
+          },
+          {
+            "id": "low_identity-u6",
+            "text": "患者：わかりました。不明点があれば確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "low_known_app",
+      "kind": "normal",
+      "split": "tuning",
+      "title": "案内済み予約アプリ",
+      "expected": {
+        "risk_level": "low",
+        "is_suspicious": false,
+        "category": null,
+        "immediate_alert": false
+      },
+      "evidence_hint": null,
+      "request": {
+        "sessionId": "synthetic-low_known_app",
+        "utterances": [
+          {
+            "id": "low_known_app-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "low_known_app-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "low_known_app-u3",
+            "text": "担当者：予約時に案内した診療アプリを使用します。",
+            "startSec": 6
+          },
+          {
+            "id": "low_known_app-u4",
+            "text": "患者：操作がわからない場合はどうしますか。",
+            "startSec": 9
+          },
+          {
+            "id": "low_known_app-u5",
+            "text": "担当者：代表窓口でも操作方法をご確認いただけます。",
+            "startSec": 12
+          },
+          {
+            "id": "low_known_app-u6",
+            "text": "患者：わかりました。不明点があれば確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "low_negation",
+      "kind": "normal",
+      "split": "holdout",
+      "title": "認証情報を教えないよう注意",
+      "expected": {
+        "risk_level": "low",
+        "is_suspicious": false,
+        "category": null,
+        "immediate_alert": false
+      },
+      "evidence_hint": null,
+      "request": {
+        "sessionId": "synthetic-low_negation",
+        "utterances": [
+          {
+            "id": "low_negation-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "low_negation-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "low_negation-u3",
+            "text": "担当者：手続きの注意事項をご説明します。",
+            "startSec": 6
+          },
+          {
+            "id": "low_negation-u4",
+            "text": "患者：気をつけることはありますか。",
+            "startSec": 9
+          },
+          {
+            "id": "low_negation-u5",
+            "text": "担当者：暗証番号や認証コードは誰にも教えないでください。",
+            "startSec": 12
+          },
+          {
+            "id": "low_negation-u6",
+            "text": "患者：わかりました。不明点があれば確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "low_fraud_quote",
+      "kind": "normal",
+      "split": "holdout",
+      "title": "詐欺手口を引用した注意喚起",
+      "expected": {
+        "risk_level": "low",
+        "is_suspicious": false,
+        "category": null,
+        "immediate_alert": false
+      },
+      "evidence_hint": null,
+      "request": {
+        "sessionId": "synthetic-low_fraud_quote",
+        "utterances": [
+          {
+            "id": "low_fraud_quote-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "low_fraud_quote-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "low_fraud_quote-u3",
+            "text": "担当者：不審な電話への注意事項です。",
+            "startSec": 6
+          },
+          {
+            "id": "low_fraud_quote-u4",
+            "text": "患者：どのような電話ですか。",
+            "startSec": 9
+          },
+          {
+            "id": "low_fraud_quote-u5",
+            "text": "担当者：「ATMで医療費を還付する」という詐欺の説明です。そのような操作要求には注意してください。",
+            "startSec": 12
+          },
+          {
+            "id": "low_fraud_quote-u6",
+            "text": "患者：わかりました。不明点があれば確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "low_privacy",
+      "kind": "normal",
+      "split": "holdout",
+      "title": "診察のプライバシー確保",
+      "expected": {
+        "risk_level": "low",
+        "is_suspicious": false,
+        "category": null,
+        "immediate_alert": false
+      },
+      "evidence_hint": null,
+      "request": {
+        "sessionId": "synthetic-low_privacy",
+        "utterances": [
+          {
+            "id": "low_privacy-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "low_privacy-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "low_privacy-u3",
+            "text": "担当者：診察内容がほかの人に聞こえる場所ですか。",
+            "startSec": 6
+          },
+          {
+            "id": "low_privacy-u4",
+            "text": "患者：周囲に人がいます。",
+            "startSec": 9
+          },
+          {
+            "id": "low_privacy-u5",
+            "text": "担当者：可能であれば静かな場所へ移動してください。相談相手の同席を禁止するものではありません。",
+            "startSec": 12
+          },
+          {
+            "id": "low_privacy-u6",
+            "text": "患者：わかりました。不明点があれば確認します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "medium_indirect_payment",
+      "kind": "ambiguous",
+      "split": "tuning",
+      "title": "間接的な支払いの急かし",
+      "expected": {
+        "risk_level": "medium",
+        "is_suspicious": true,
+        "category": "C1",
+        "immediate_alert": false
+      },
+      "evidence_hint": null,
+      "request": {
+        "sessionId": "synthetic-medium_indirect_payment",
+        "utterances": [
+          {
+            "id": "medium_indirect_payment-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "medium_indirect_payment-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "medium_indirect_payment-u3",
+            "text": "担当者：診療費とは別の支払い手続きについての連絡です。",
+            "startSec": 6
+          },
+          {
+            "id": "medium_indirect_payment-u4",
+            "text": "患者：具体的な手順をまだ聞いていません。",
+            "startSec": 9
+          },
+          {
+            "id": "medium_indirect_payment-u5",
+            "text": "担当者：今日中に済ませておく方が安心かもしれませんね。正式な窓口や明細の説明はまだありません。",
+            "startSec": 12
+          },
+          {
+            "id": "medium_indirect_payment-u6",
+            "text": "患者：正式な案内を確認してから判断します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "medium_unclear_documents",
+      "kind": "ambiguous",
+      "split": "tuning",
+      "title": "個人情報の送付先が不明",
+      "expected": {
+        "risk_level": "medium",
+        "is_suspicious": true,
+        "category": "C2",
+        "immediate_alert": false
+      },
+      "evidence_hint": null,
+      "request": {
+        "sessionId": "synthetic-medium_unclear_documents",
+        "utterances": [
+          {
+            "id": "medium_unclear_documents-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "medium_unclear_documents-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "medium_unclear_documents-u3",
+            "text": "担当者：保険資格の確認書類についてお話しします。",
+            "startSec": 6
+          },
+          {
+            "id": "medium_unclear_documents-u4",
+            "text": "患者：具体的な手順をまだ聞いていません。",
+            "startSec": 9
+          },
+          {
+            "id": "medium_unclear_documents-u5",
+            "text": "担当者：画像で確認できると進めやすいのですが。どこへ送るかはまだご案内していません。",
+            "startSec": 12
+          },
+          {
+            "id": "medium_unclear_documents-u6",
+            "text": "患者：正式な案内を確認してから判断します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "medium_unclear_app",
+      "kind": "ambiguous",
+      "split": "holdout",
+      "title": "未確認の外部アプリへの間接誘導",
+      "expected": {
+        "risk_level": "medium",
+        "is_suspicious": true,
+        "category": "C3",
+        "immediate_alert": false
+      },
+      "evidence_hint": null,
+      "request": {
+        "sessionId": "synthetic-medium_unclear_app",
+        "utterances": [
+          {
+            "id": "medium_unclear_app-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "medium_unclear_app-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "medium_unclear_app-u3",
+            "text": "担当者：予約についてお話しします。",
+            "startSec": 6
+          },
+          {
+            "id": "medium_unclear_app-u4",
+            "text": "患者：具体的な手順をまだ聞いていません。",
+            "startSec": 9
+          },
+          {
+            "id": "medium_unclear_app-u5",
+            "text": "担当者：別のアプリを使うと便利かもしれません。提供元や正式な導入手順はまだ説明していません。",
+            "startSec": 12
+          },
+          {
+            "id": "medium_unclear_app-u6",
+            "text": "患者：正式な案内を確認してから判断します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "medium_indirect_authority",
+      "kind": "ambiguous",
+      "split": "holdout",
+      "title": "肩書への依存を促す間接表現",
+      "expected": {
+        "risk_level": "medium",
+        "is_suspicious": true,
+        "category": "C4",
+        "immediate_alert": false
+      },
+      "evidence_hint": null,
+      "request": {
+        "sessionId": "synthetic-medium_indirect_authority",
+        "utterances": [
+          {
+            "id": "medium_indirect_authority-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "medium_indirect_authority-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "medium_indirect_authority-u3",
+            "text": "担当者：架空のしろいし保険案内室からの連絡です。",
+            "startSec": 6
+          },
+          {
+            "id": "medium_indirect_authority-u4",
+            "text": "患者：具体的な手順をまだ聞いていません。",
+            "startSec": 9
+          },
+          {
+            "id": "medium_indirect_authority-u5",
+            "text": "担当者：公的な担当者の話ですから、そのまま受け止めてもらえると進めやすいと思います。",
+            "startSec": 12
+          },
+          {
+            "id": "medium_indirect_authority-u6",
+            "text": "患者：正式な案内を確認してから判断します。",
+            "startSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "medium_indirect_secrecy",
+      "kind": "ambiguous",
+      "split": "holdout",
+      "title": "相談を控えるよう遠回しに誘導",
+      "expected": {
+        "risk_level": "medium",
+        "is_suspicious": true,
+        "category": "C5",
+        "immediate_alert": false
+      },
+      "evidence_hint": null,
+      "request": {
+        "sessionId": "synthetic-medium_indirect_secrecy",
+        "utterances": [
+          {
+            "id": "medium_indirect_secrecy-u1",
+            "text": "担当者：こんにちは。",
+            "startSec": 0
+          },
+          {
+            "id": "medium_indirect_secrecy-u2",
+            "text": "患者：こんにちは。",
+            "startSec": 3
+          },
+          {
+            "id": "medium_indirect_secrecy-u3",
+            "text": "担当者：今回の追加手続きについてお話しします。",
+            "startSec": 6
+          },
+          {
+            "id": "medium_indirect_secrecy-u4",
+            "text": "患者：具体的な手順をまだ聞いていません。",
+            "startSec": 9
+          },
+          {
+            "id": "medium_indirect_secrecy-u5",
+            "text": "担当者：ほかの人に話すと面倒になるかもしれません。お二人だけで進める方がよさそうですね。",
+            "startSec": 12
+          },
+          {
+            "id": "medium_indirect_secrecy-u6",
+            "text": "患者：正式な案内を確認してから判断します。",
+            "startSec": 15
+          }
+        ]
+      }
+    }
+  ]
+}

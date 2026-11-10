@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 開発・MVP方針:
+    // セキュリティ強化のため、クライアントからの直接読み書きは全面禁止。
+    // すべてのアクセスは Cloud Run バックエンド（サービスアカウント権限）を経由する。
+    match /sessions/{sessionId} {
+      allow read, write: if false;
+
+      match /detections/{detectionId} {
+        allow read, write: if false;
+      }
+    }
+
+    // 将来の拡張案（Firebase Auth導入時）:
+    // match /sessions/{sessionId} {
+    //   allow read: if request.auth != null && request.auth.uid == resource.data.userId;
+    //   allow write: if false; // 書き込みは常にバックエンドのみ
+    // }
+  }
+}
+

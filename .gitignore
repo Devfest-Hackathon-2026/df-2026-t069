@@ -32,3 +32,10 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 *.log
+google-library.md
+
+google-library.pdf
+
+# Next.js generated files
+frontend/next-env.d.ts
+*.tsbuildinfo

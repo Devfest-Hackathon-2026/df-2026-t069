@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>通話後レポート</title>
+<style>
+:root{
+  --primary:#2563eb; --primary-hover:#1d4ed8;
+  --primary-gradient:linear-gradient(135deg,#1e40af 0%,#3b82f6 100%);
+  --danger:#dc2626; --danger-hover:#b91c1c; --success:#16a34a; --warning:#d97706;
+  --bg:#f8fafc; --card-bg:#ffffff; --text-main:#0f172a; --text-sub:#475569; --text-muted:#94a3b8; --border:#e2e8f0;
+  --shadow-sm:0 1px 3px 0 rgba(0,0,0,.05);
+  --shadow-md:0 4px 6px -1px rgba(0,0,0,.08),0 2px 4px -2px rgba(0,0,0,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Hiragino Sans","Noto Sans JP",sans-serif;
+  background:var(--bg);color:var(--text-main);line-height:1.7}
+main{max-width:720px;margin:0 auto;padding:24px 16px 56px;display:flex;flex-direction:column;gap:16px}
+h1{font-size:20px;font-weight:800;letter-spacing:-.3px;background:var(--primary-gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;width:fit-content}
+h2{font-size:14px;font-weight:700;margin-top:8px}
+.sub{font-size:12px;color:var(--text-muted);font-weight:600}
+header{padding-bottom:12px;border-bottom:1px solid var(--border)}
+/* サマリー(popup の metric-box と同じ見た目) */
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;align-items:center;box-shadow:var(--shadow-sm)}
+.stat dt{font-size:11px;font-weight:600;color:var(--text-muted)}
+.stat dd{font-size:18px;font-weight:700}
+/* 危険度ピル(status-pill と同じ配色) */
+.badge{display:inline-flex;align-items:center;padding:2px 12px;border-radius:9999px;font-size:12px;font-weight:700;line-height:1.7}
+.badge.high{background:#fee2e2;color:var(--danger)}
+.badge.medium{background:#fef3c7;color:var(--warning)}
+.badge.low{background:#dcfce7;color:var(--success)}
+.badge.none{background:#f1f5f9;color:var(--text-sub)}
+/* 検出位置バー */
+.strip{position:relative;height:34px;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-sm)}
+.strip button{position:absolute;top:6px;width:14px;height:20px;margin-left:-7px;padding:0;border:0;border-radius:4px;cursor:pointer}
+.strip button.high{background:var(--danger)}.strip button.medium{background:var(--warning)}.strip button.low{background:var(--success)}
+.strip button:focus-visible,.retry:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+.ticks{display:flex;justify-content:space-between;color:var(--text-muted);font-size:11px;margin-top:4px}
+/* 検出一覧 */
+ol.list{list-style:none;display:grid;gap:12px}
+.item{background:var(--card-bg);border:1px solid var(--border);border-left-width:5px;border-radius:14px;box-shadow:var(--shadow-sm);padding:16px;scroll-margin:24px}
+.item.high{border-left-color:var(--danger)}.item.medium{border-left-color:var(--warning)}.item.low{border-left-color:var(--success)}
+.item.flash{outline:3px solid var(--primary)}
+.meta{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.time{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:13px;font-weight:700;color:var(--primary)}
+blockquote{margin:0 0 12px;padding:8px 12px;background:#f8fafc;border:1px solid var(--border);border-radius:8px;font-size:14px}
+.label{display:block;font-size:11px;font-weight:600;color:var(--text-muted)}
+.item p{font-size:13px;color:var(--text-sub);margin:0 0 12px}
+.action{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:10px 14px}
+.action .label{color:#1e40af}
+.action p{margin:0;font-size:13px;font-weight:700;color:#1e3a8a}
+/* 状態カード(notice-card と同じ配色) */
+.state{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:20px 16px;text-align:center;font-size:13px;color:var(--text-sub);display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:var(--shadow-sm)}
+.state.empty{background:#eff6ff;border-color:#bfdbfe;color:#1e3a8a;font-weight:600}
+.state.error{background:#fef2f2;border-color:#fecaca;color:var(--danger)}
+.retry{margin-top:4px;padding:10px 20px;background:var(--primary-gradient);color:#fff;border:0;border-radius:8px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 2px 6px rgba(37,99,235,.25);transition:transform .15s,box-shadow .15s}
+.retry:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(37,99,235,.35)}
+@media (max-width:480px){.summary{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.retry{transition:none}}
+</style>
+</head>
+<body>
+<main id="app" aria-live="polite"></main>
+
+<script>
+// ===== 設定 =====
+const API_BASE = "https://YOUR-CLOUD-RUN-URL"; // #16 のデプロイ先に差し替え
+// 使い方: report.html?mock=normal | empty | error | loading   /   report.html?session=SESSION_ID
+
+// ===== モックデータ(スキfーマは #17/#23 確定後に合わせる。想定:) =====
+const MOCKS = {
+  normal: {
+    session_id:"mock-1", started_at:"2026-11-09T10:00:00+09:00", duration_sec:754, max_risk:"high",
+    detections:[
+      {id:"d1", offset_sec:95,  risk:"low",    quote:"最近は保険の見直しをされる方が多いんですよ。", reason:"相手の事情を聞く前に、一般論で話を進めようとしている。", recommended_action:"その場で決めず、内容を書き留めてください。"},
+      {id:"d2", offset_sec:312, risk:"medium", quote:"今日中にお手続きいただければ割引が適用されます。", reason:"期限を区切って判断を急がせる表現。", recommended_action:"「家族と相談して後日連絡します」と伝えて通話を切りましょう。"},
+      {id:"d3", offset_sec:588, risk:"high",   quote:"口座の暗証番号を教えていただければ、こちらで処理します。", reason:"暗証番号の聞き出しは、正規の窓口では行われません。", recommended_action:"情報は伝えず通話を終了し、公式サイトの電話番号から確認してください。"}
+    ]
+  },
+  empty: {session_id:"mock-2", started_at:"2026-11-09T11:00:00+09:00", duration_sec:421, max_risk:"none", detections:[]}
+};
+
+// ===== ユーティリティ =====
+const RISK = {high:"高", medium:"中", low:"低", none:"なし"};
+const RANK = {none:0, low:1, medium:2, high:3};
+const mmss = s => `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,"0")}`;
+const dur  = s => `${Math.floor(s/60)}分${Math.floor(s%60)}秒`;
+// 通話内の発言は外部入力なので textContent のみ使う(innerHTML は使わない)
+function el(tag, cls, text){
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+const app = document.getElementById("app");
+const show = (...nodes) => app.replaceChildren(...nodes);
+
+// ===== 取得 =====
+async function fetchReport(){
+  const p = new URLSearchParams(location.search);
+  const mock = p.get("mock");
+  if (mock === "error") throw new Error("mock error");
+  if (mock === "loading") return new Promise(() => {});
+  if (mock) return MOCKS[mock] ?? MOCKS.normal;
+  const id = p.get("session");
+  if (!id) throw new Error("session id がありません");
+  const res = await fetch(
+  `${API_BASE}/api/v1/sessions/${encodeURIComponent(id)}`
+  );
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}
+
+// ===== 描画 =====
+function header(r){
+  const box = el("header");
+  box.append(el("h1", null, "通話後レポート"));
+  const d = r.started_at ? new Date(r.started_at).toLocaleString("ja-JP") : "";
+  box.append(el("p", "sub", d ? `${d} の通話` : ""));
+  return box;
+}
+function summary(r){
+  const dl = el("dl", "summary");
+  const mk = (label, node) => { const s = el("div","stat"); s.append(el("dt",null,label)); const dd = el("dd"); dd.append(node); s.append(dd); dl.append(s); };
+  mk("最大危険度", el("span", `badge ${r.max_risk}`, RISK[r.max_risk] ?? "なし"));
+  mk("検出件数", document.createTextNode(`${r.detections.length}件`));
+  mk("通話時間", document.createTextNode(dur(r.duration_sec)));
+  return dl;
+}
+function strip(r){
+  const wrap = el("div");
+  wrap.append(el("h2", null, "通話のどこで検出されたか"));
+  const bar = el("div", "strip");
+  r.detections.forEach(d => {
+    const b = el("button", d.risk);
+    b.style.left = `${Math.min(100, d.offset_sec / r.duration_sec * 100)}%`;
+    b.setAttribute("aria-label", `${mmss(d.offset_sec)} 危険度${RISK[d.risk]}の検出へ移動`);
+    b.onclick = () => {
+      const t = document.getElementById(`det-${d.id}`);
+      t.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion:reduce)").matches ? "auto" : "smooth", block:"center"});
+      t.classList.add("flash"); setTimeout(() => t.classList.remove("flash"), 1500);
+    };
+    bar.append(b);
+  });
+  const ticks = el("div", "ticks"); ticks.append(el("span",null,"0:00"), el("span",null,mmss(r.duration_sec)));
+  wrap.append(bar, ticks);
+  return wrap;
+}
+function list(r){
+  const wrap = el("div");
+  wrap.append(el("h2", null, "検出一覧(時系列)"));
+  const ol = el("ol", "list");
+  [...r.detections].sort((a,b) => a.offset_sec - b.offset_sec).forEach(d => {
+    const li = el("li", `item ${d.risk}`); li.id = `det-${d.id}`;
+    const meta = el("div","meta");
+    meta.append(el("span","time",mmss(d.offset_sec)), el("span",`badge ${d.risk}`,`危険度 ${RISK[d.risk]}`));
+    const q = el("blockquote", null, d.quote);
+    const why = el("p"); why.append(el("span","label","不審と判断した理由"), document.createTextNode(d.reason));
+    const act = el("div","action"); act.append(el("span","label","おすすめの行動"), el("p",null,d.recommended_action));
+    li.append(meta, q, why, act); ol.append(li);
+  });
+  wrap.append(ol);
+  return wrap;
+}
+function renderReport(r){
+  if (!r.detections?.length){
+    const s = el("div","state empty");
+    s.append(el("p",null,"この通話では、不審な発言は検出されませんでした。"));
+    s.append(el("p","sub","通話時間: " + dur(r.duration_sec)));
+    return show(header(r), summary({...r, detections:[]}), el("div","",""), s);
+  }
+  show(header(r), summary(r), strip(r), list(r));
+}
+function renderError(){
+  const s = el("div","state error");
+  s.append(el("p",null,"レポートを取得できませんでした。通信状況を確認して、もう一度お試しください。"));
+  const b = el("button","retry","再取得する"); b.onclick = load;
+  s.append(b); show(el("h1",null,"通話後レポート"), s);
+}
+async function load(){
+  show(el("h1",null,"通話後レポート"), el("div","state",null)); app.lastChild.textContent = "読み込み中…";
+  try { renderReport(await fetchReport()); } catch(e){ console.error(e); renderError(); }
+}
+load();
+</script>
+</body>
+</html>

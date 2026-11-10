@@ -1,0 +1,20 @@
+{
+  "hosting": {
+    "site": "waiwaiwaiwai",
+    "public": "frontend/public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "run": {
+          "serviceId": "detector-frontend",
+          "region": "asia-northeast1"
+        }
+      }
+    ]
+  }
+}
